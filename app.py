@@ -4,21 +4,25 @@ app = Flask(__name__)
 
 estoque = []
 
-
 # 🟢 TELA PRINCIPAL
 @app.route("/", methods=["GET", "POST"])
-
 def home():
     if request.method == "POST":
-        nome = request.form["nome"]
+        nome = request.form["nome"].strip().lower()
         quantidade = int(request.form["quantidade"])
         preco = float(request.form["preco"])
 
-        estoque.append({
-            "nome": nome,
-            "quantidade": quantidade,
-            "preco": preco
-        })
+        for produto in estoque:
+            if produto["nome"] == nome:
+                produto["quantidade"] += quantidade
+                produto["preco"] = preco
+                break
+        else:
+            estoque.append({
+                "nome": nome,
+                "quantidade": quantidade,
+                "preco": preco
+            })
 
         return redirect("/")
 
@@ -27,10 +31,10 @@ def home():
     return render_template("index.html", estoque=estoque, total=total)
 
 
-# 🔴 REMOVER POR NOME + QUANTIDADE
+# 🔴 REMOVER PRODUTO
 @app.route("/remover", methods=["POST"])
 def remover():
-    nome = request.form["nome"]
+    nome = request.form["nome"].strip().lower()
     quantidade_remover = int(request.form["quantidade"])
 
     for produto in estoque:
@@ -44,10 +48,10 @@ def remover():
     return redirect("/")
 
 
-# 🟡 REPOR POR NOME + QUANTIDADE
+# 🟡 REPOR PRODUTO
 @app.route("/repor", methods=["POST"])
 def repor():
-    nome = request.form["nome"]
+    nome = request.form["nome"].strip().lower()
     quantidade_add = int(request.form["quantidade"])
 
     for produto in estoque:
