@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Estoque</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>📦 Sistema de Estoque</h1>
+
+<hr>
+
+<!-- CADASTRAR -->
+<h2>➕ Cadastrar Produto</h2>
+<form method="POST">
+    <input type="text" name="nome" placeholder="Nome do produto" required>
+    <input type="number" name="quantidade" placeholder="Quantidade" required>
+    <input type="number" step="0.01" name="preco" placeholder="Preço" required>
+    <button type="submit">Cadastrar</button>
+</form>
+
+<hr>
+
+<!-- LISTA -->
+<h2>📋 Produtos</h2>
+
+{% if estoque %}
+<ul>
+    {% for produto in estoque %}
+        <li>
+            <b>{{ produto.nome }}</b><br>
+            Quantidade: {{ produto.quantidade }}<br>
+            Preço: R$ {{ "%.2f"|format(produto.preco) }}<br>
+            Total: R$ {{ "%.2f"|format(produto.quantidade * produto.preco) }}
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Estoque vazio</p>
+{% endif %}
+
+<hr>
+
+<!-- REMOVER -->
+<h2>🔴 Remover Produto</h2>
+<form action="/remover" method="POST">
+    <input type="text" name="nome" placeholder="Nome do produto" required>
+    <input type="number" name="quantidade" placeholder="Quantidade" required>
+    <button class="remover">Remover</button>
+</form>
+
+<hr>
+
+<!-- REPOR -->
+<h2>🟢 Repor Produto</h2>
+<form action="/repor" method="POST">
+    <input type="text" name="nome" placeholder="Nome do produto" required>
+    <input type="number" name="quantidade" placeholder="Quantidade" required>
+    <button>Repor</button>
+</form>
+
+<hr>
+
+<!-- TOTAL -->
+<h2>💰 Valor total do estoque</h2>
+<p><b>R$ {{ "%.2f"|format(total) }}</b></p>
+
+</body>
+</html>

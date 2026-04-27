@@ -1,0 +1,92 @@
+body {
+    background: #eef1f4;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: #1f2937;
+    margin: 0;
+    padding: 30px;
+}
+
+/* CONTAINER VISUAL (simula sistema) */
+h1 {
+    text-align: left;
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #111827;
+}
+
+/* SEÇÕES */
+h2 {
+    font-size: 16px;
+    margin-top: 25px;
+    color: #374151;
+    border-left: 4px solid #3b82f6;
+    padding-left: 10px;
+}
+
+/* INPUTS MAIS SISTEMA */
+input {
+    padding: 10px;
+    margin: 5px 5px 10px 0;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    width: 200px;
+    background: white;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+/* BOTÕES */
+button {
+    padding: 9px 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+    font-weight: 500;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+/* LISTA (estilo tabela corporativa) */
+ul {
+    padding: 0;
+    margin-top: 10px;
+}
+
+li {
+    list-style: none;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 12px;
+    width: 600px;
+    text-align: left;
+}
+
+/* BOTÃO REMOVER MAIS "SÉRIO" */
+.remover {
+    background: #dc2626;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+.remover:hover {
+    background: #b91c1c;
+}
+
+/* TOTAL */
+p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* ALINHAMENTO GERAL MAIS SISTEMA */
+form {
+    margin-bottom: 10px;
+}
